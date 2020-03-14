@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -22,146 +23,10 @@
 </head>
 
 <body>
-
-	<!--================Header Menu Area =================-->
-	<header class="header_area">
-		<div class="top_menu row m0">
-			<div class="container-fluid">
-				<div class="float-left">
-					<p>Call Us: 012 44 5698 7456 896</p>
-				</div>
-				<div class="float-right">
-					<ul class="right_side">
-						<li>
-							<a href="login.html">
-								Login/Register
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								My Account
-							</a>
-						</li>
-						<li>
-							<a href="contact.html">
-								Contact Us
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html">
-						<img src="img/logo.png" alt="">
-					</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-					 aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<div class="row w-100">
-							<div class="col-lg-7 pr-0">
-								<ul class="nav navbar-nav center_nav pull-right">
-									<li class="nav-item active">
-										<a class="nav-link" href="index.html">Home</a>
-									</li>
-									<li class="nav-item submenu dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
-										<ul class="dropdown-menu">
-											<li class="nav-item">
-												<a class="nav-link" href="category.html">Shop Category</a>
-												<li class="nav-item">
-													<a class="nav-link" href="single-product.html">Product Details</a>
-													<li class="nav-item">
-														<a class="nav-link" href="checkout.html">Product Checkout</a>
-														<li class="nav-item">
-															<a class="nav-link" href="cart.html">Shopping Cart</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" href="confirmation.html">Confirmation</a>
-														</li>
-										</ul>
-										</li>
-										<li class="nav-item submenu dropdown">
-											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-											<ul class="dropdown-menu">
-												<li class="nav-item">
-													<a class="nav-link" href="blog.html">Blog</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link" href="single-blog.html">Blog Details</a>
-												</li>
-											</ul>
-										</li>
-										<li class="nav-item submenu dropdown">
-											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-											<ul class="dropdown-menu">
-												<li class="nav-item">
-													<a class="nav-link" href="login.html">Login</a>
-													<li class="nav-item">
-														<a class="nav-link" href="tracking.html">Tracking</a>
-														<li class="nav-item">
-															<a class="nav-link" href="elements.html">Elements</a>
-														</li>
-											</ul>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="contact.html">Contact</a>
-											</li>
-								</ul>
-							</div>
-
-							<div class="col-lg-5">
-								<ul class="nav navbar-nav navbar-right right_nav pull-right">
-									<hr>
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</a>
-									</li>
-
-									<hr>
-
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-user" aria-hidden="true"></i>
-										</a>
-									</li>
-
-									<hr>
-
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-heart-o" aria-hidden="true"></i>
-										</a>
-									</li>
-
-									<hr>
-
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="lnr lnr lnr-cart"></i>
-										</a>
-									</li>
-
-									<hr>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<!--================Header Menu Area =================-->
-
+<?php
+	require 'php/connection.php';
+	include 'template/header.php';
+?>
 	<!--================Home Banner Area =================-->
 	<section class="banner_area">
 		<div class="banner_inner d-flex align-items-center">
@@ -193,20 +58,129 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
+<?php
+// define variables and set to empty values
+$nameErr = $addErr = $passErr = $passLengthErr = $tel_noErr = "";
+$fname = $lname = $email = $user_name = $pass = $pass_Con = $tel_no = $add_txt = $gender = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["fname"])) {
+    $nameErr = "Name is required";
+  } else {
+    $fname = test_input($_POST["fname"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+      $nameErr = "Only letters and white space allowed in Name"; 
+	}
+  }
+  if (empty($_POST["lname"])) {
+    $nameErr = "Name is required";
+  } else {
+    $lname = test_input($_POST["lname"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+      $nameErr = "Only letters and white space allowed in Name"; 
+    }
+  }
+  $pass = test_input($_POST["password"]);
+  $pass_Con = test_input($_POST["passCon"]);
+	if($pass !== $pass_Con){
+		$passErr = "Password did not match";
+	}
+   $passLength = strlen($pass);
+   
+  if($passLength < 6){
+	 $passLengthErr = "Password must be minimum of 6 characters";
+  }
+	$gender = test_input($_POST["gender"]);
+}
+function test_input($data){
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+if(isset($_POST['btnReg'])){
+			$fname = $_POST['fname'];
+			$lname = $_POST['lname'];
+			$email = $_POST['email_add'];
+			$user_name = $_POST['username'];
+			$pass = $_POST['password'];
+			$pass_Con = $_POST['passCon'];
+			$tel_no = $_POST['tel_no'];
+			$add_txt = $_POST['add'];
+			$gen = $_POST['gender'];
+	
+	if($nameErr != "Only letters and white space allowed in Name"){
+			//user check the length
+			$userLength = strlen($user_name);
+			if($userLength < 5){
+				$userErr = "Username must be minimum of 5 Characters";
+			}
+			//check the password length
+			if($pass !== $pass_Con){
+					$passErr= "Password did not match";
+			}
+			if($pass == $pass_Con And $passLength >= 6 And $userLength >= 5){
+				echo "Not Ok";
+				$sql=$link->query("INSERT INTO tblclient values('Null',
+				'$fname','$lname','email','$user_name','$pass','$tel_no','$add_txt','$gen'");
+
+				if($sql){
+						$_SESSION['Username'] = $user_name;
+						echo " <script>
+								window.alert('Registered');
+								window.location.href = 'index.php'
+							   </script>";
+				}
+						}else{
+							if($passLength < 6){
+								echo "<script>
+										window.alert('Password is less than 6 Characters');
+									</script>";
+							}
+							if($userLength < 5){
+								echo "<script>
+										window.alert('Username is less than 5 Characters');
+									</script>";
+							}
+						}
+				
+					}
+				}
+?>
 					<div class="login_form_inner reg_form">
 						<h3>Create an Account</h3>
-						<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<form class="row login_form" action="" method="post" id="contactForm">
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+								<span class="error" style = "color:red"> <?php echo $nameErr;?></span>
+								<div id = "name_valid_check"></div>
+								<input type="text" class="form-control" onkeyup = "checking_name_first()" id = "f_name_check" name="fname" placeholder="First Name" value="<?php echo $fname;?>"required>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+								<input type="text" class="form-control" id="name" name="lname" placeholder="Last Name" value="<?php echo $lname;?>" required>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="password" name="password" placeholder="Password">
+								<input type="email" class="form-control" id="email" name="email_add" placeholder="Email Address" value="<?php echo $email;?>" required>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="password" class="form-control" id="pass" name="pass" placeholder="Confirm password">
+								<input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $user_name;?>"required>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="pass" name="password" placeholder="Password" required>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="passCon" name="passCon" placeholder="Confirm password" required>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="tel_no" name="tel_no" placeholder="Tel. No." value="<?php echo $tel_no;?>"required>
+							</div>
+							<div class="col-md-12 form-group">
+								<textarea name="add" required><?php echo $add_txt;?></textarea> 
+							</div>
+							<div class="col-md-12 form-group">
+								<input type = "radio" name = "gender" value = "Male" required>Male<br>
+								<input type = "radio" name = "gender" value = "Female"required>Female<br>
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
@@ -215,7 +189,7 @@
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="btn submit_btn">Register</button>
+								<button type="submit" value="submit" name = "btnReg" class="btn submit_btn">Register</button>
 							</div>
 						</form>
 					</div>
@@ -337,5 +311,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="vendors/counter-up/jquery.counterup.js"></script>
 	<script src="js/theme.js"></script>
 </body>
-
+<script src = "js/jquery.js"></script>
+<script>
+	function checking_name_first(){
+			var valid_name_f = document.getElementById("f_name_check").value;
+			$.post("fname_check.php",
+			{
+				fname_lname_valid: valid_name_f
+			},
+			function(data, status){
+				if(data == '<span style = "color:red">Invalid Name!</span>'){
+					document.getElementById("register").disabled = true;
+				}else if(data == '<p style = "color:blue">Invalid Mobile #</p>'){
+					document.getElementById("register").disabled = true;
+				}else{	
+					document.getElementById("register").disabled = false;
+				}
+				document.getElementById("name_valid_check").innerHTML = data;
+				
+			}
+			
+			);
+			
+		}	
+</script>
 </html>

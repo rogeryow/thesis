@@ -39,3 +39,16 @@
 .cat_page {
 	margin-top: 25px;
 }
+
+/*single-product start*/
+.img-carousel {
+	height: 416.5px;
+	object-fit: cover;
+}
+
+.img-thumb {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+/*single-product end*/

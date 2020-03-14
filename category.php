@@ -115,7 +115,27 @@
 								$service_name = $row['Services_Title'];
 								$service_price = $row['Services_Price'];
 								$service_img = $row['Services_Img'];
+								$service_id = $row['IDServices'];
 								$path_img = "img/product/services/";
+
+								$sql_price_range = "SELECT * FROM `tblservices_options` WHERE Service_ID LIKE " . $service_id;
+								$arr_price_range = array();
+								$price_range = '';
+								if(mysqli_stmt_prepare($stmt, $sql_price_range)) {
+									mysqli_stmt_execute($stmt);
+									$result_price_range = mysqli_stmt_get_result($stmt);
+									while($row = mysqli_fetch_assoc($result_price_range)) {
+										array_push($arr_price_range, $row['price']);
+									}
+								}
+								if(count($arr_price_range) == 1) {
+									$price_range = $arr_price_range[0];
+								}
+								elseif(count($arr_price_range) > 2) {
+									$price_range = min($arr_price_range) . " - " . max($arr_price_range);
+								} else {
+									$price_range = "";
+								}
 							?>
 							<!-- template item start -->
 							<div class="box-shad col-lg-4 col-md-4 col-sm-6">
@@ -131,10 +151,10 @@
 											</a>
 										</div>
 									</div>
-									<a href="#">
+									<a href="single-product.php?service_id=<?php echo $service_id ?>">
 										<h4><?php echo $service_name ?></h4>
 									</a>
-									<h5><?php echo "₱ " . $service_price ?></h5>
+									<h5><?php echo "₱ " . $price_range ?></h5>
 								</div>
 							</div>
 							<!-- template item end -->

@@ -19,197 +19,49 @@
 	<!-- main css -->
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/sog.css">
 </head>
 
 <body>
 
-	<!--================Header Menu Area =================-->
-	<header class="header_area">
-		<div class="top_menu row m0">
-			<div class="container-fluid">
-				<div class="float-left">
-					<p>Call Us: 012 44 5698 7456 896</p>
-				</div>
-				<div class="float-right">
-					<ul class="right_side">
-						<li>
-							<a href="login.html">
-								Login/Register
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								My Account
-							</a>
-						</li>
-						<li>
-							<a href="contact.html">
-								Contact Us
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html">
-						<img src="img/logo.png" alt="">
-					</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-					 aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<div class="row w-100">
-							<div class="col-lg-7 pr-0">
-								<ul class="nav navbar-nav center_nav pull-right">
-									<li class="nav-item active">
-										<a class="nav-link" href="index.html">Home</a>
-									</li>
-									<li class="nav-item submenu dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
-										<ul class="dropdown-menu">
-											<li class="nav-item">
-												<a class="nav-link" href="category.html">Shop Category</a>
-												<li class="nav-item">
-													<a class="nav-link" href="single-product.html">Product Details</a>
-													<li class="nav-item">
-														<a class="nav-link" href="checkout.html">Product Checkout</a>
-														<li class="nav-item">
-															<a class="nav-link" href="cart.html">Shopping Cart</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" href="confirmation.html">Confirmation</a>
-														</li>
-										</ul>
-										</li>
-										<li class="nav-item submenu dropdown">
-											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-											<ul class="dropdown-menu">
-												<li class="nav-item">
-													<a class="nav-link" href="blog.html">Blog</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link" href="single-blog.html">Blog Details</a>
-												</li>
-											</ul>
-										</li>
-										<li class="nav-item submenu dropdown">
-											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-											<ul class="dropdown-menu">
-												<li class="nav-item">
-													<a class="nav-link" href="login.html">Login</a>
-													<li class="nav-item">
-														<a class="nav-link" href="tracking.html">Tracking</a>
-														<li class="nav-item">
-															<a class="nav-link" href="elements.html">Elements</a>
-														</li>
-											</ul>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="contact.html">Contact</a>
-											</li>
-								</ul>
-							</div>
-
-							<div class="col-lg-5">
-								<ul class="nav navbar-nav navbar-right right_nav pull-right">
-									<hr>
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</a>
-									</li>
-
-									<hr>
-
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-user" aria-hidden="true"></i>
-										</a>
-									</li>
-
-									<hr>
-
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-heart-o" aria-hidden="true"></i>
-										</a>
-									</li>
-
-									<hr>
-
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="lnr lnr lnr-cart"></i>
-										</a>
-									</li>
-
-									<hr>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<!--================Header Menu Area =================-->
-
-	<!--================Home Banner Area =================-->
-	<section class="banner_area">
-		<div class="banner_inner d-flex align-items-center">
-			<div class="container">
-				<div class="banner_content text-center">
-					<h2>Single Product Page</h2>
-					<div class="page_link">
-						<a href="index.html">Home</a>
-						<a href="category.html">Category</a>
-						<a href="single-product.html">Product Details</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Home Banner Area =================-->
+	<?php 
+		require 'php/connection.php';
+		include 'template/header.php';  
+	?>
 
 	<!--================Single Product Area =================-->
 	<div class="product_image_area">
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
+					<!-- carousel start -->
 					<div class="s_product_img">
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
 								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-									<img src="img/product/single-product/s-product-s-2.jpg" alt="">
+									<img class="img-thumb" src="img/product/single-product/massage1.jpg" alt=""> 
 								</li>
 								<li data-target="#carouselExampleIndicators" data-slide-to="1">
-									<img src="img/product/single-product/s-product-s-3.jpg" alt="">
+									<img class="img-thumb" src="img/product/single-product/massage2.jpeg" alt="">
 								</li>
 								<li data-target="#carouselExampleIndicators" data-slide-to="2">
-									<img src="img/product/single-product/s-product-s-4.jpg" alt="">
+									<img class="img-thumb" src="img/product/single-product/massage3.jpg" alt="">
 								</li>
 							</ol>
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block w-100" src="img/product/single-product/s-product-1.jpg" alt="First slide">
+									<img class="d-block w-100 img-carousel" src="img/product/single-product/massage1.jpg" alt="First slide">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="img/product/single-product/s-product-1.jpg" alt="Second slide">
+									<img class="d-block w-100 img-carousel" src="img/product/single-product/massage2.jpeg" alt="Second slide">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="img/product/single-product/s-product-1.jpg" alt="Third slide">
+									<img class="d-block w-100 img-carousel" src="img/product/single-product/massage3.jpg" alt="Third slide">
 								</div>
 							</div>
 						</div>
 					</div>
+					<!-- carousel stop -->
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
