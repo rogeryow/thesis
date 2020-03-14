@@ -8,9 +8,16 @@
 	object-fit: cover;
 }
 
-.f_p_item {
-	cursor: pointer;
+.cat_product_area .latest_product_inner .f_p_item {
+	margin-bottom: 15px;
 }
+
+.f_p_item {
+	padding-top: 5px;
+	padding-bottom: 25px;
+	margin-bottom: 15px;
+}
+
 .f_p_item h4 {
 	font-size: 18px;
 }
@@ -18,4 +25,17 @@
 .f_p_item h5 {
 	color: #f57224;
 	font-size: 17px;
+}
+
+.box-shad {
+	cursor: pointer;
+	margin-bottom: 25px;
+}
+
+.box-shad:hover {
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+}
+
+.cat_page {
+	margin-top: 25px;
 }

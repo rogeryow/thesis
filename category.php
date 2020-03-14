@@ -118,7 +118,7 @@
 								$path_img = "img/product/services/";
 							?>
 							<!-- template item start -->
-							<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="box-shad col-lg-4 col-md-4 col-sm-6">
 								<div class="f_p_item">
 									<div class="f_p_img">
 										<img class="img-fit" src="<?php echo $path_img . $service_img ?>" alt="">
