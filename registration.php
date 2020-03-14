@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
-	<title>Fashiop</title>
+	<title>Services on the Go</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -124,7 +124,7 @@ if(isset($_POST['btnReg'])){
 			if($pass == $pass_Con And $passLength >= 6 And $userLength >= 5){
 				echo "Not Ok";
 				$sql=$link->query("INSERT INTO tblclient values('Null',
-				'$fname','$lname','email','$user_name','$pass','$tel_no','$add_txt','$gen'");
+				'$fname','$lname','email','$user_name','$pass','$tel_no','$add_txt','$gen')");
 
 				if($sql){
 						$_SESSION['Username'] = $user_name;
@@ -158,7 +158,7 @@ if(isset($_POST['btnReg'])){
 								<input type="text" class="form-control" onkeyup = "checking_name_first()" id = "f_name_check" name="fname" placeholder="First Name" value="<?php echo $fname;?>"required>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="lname" placeholder="Last Name" value="<?php echo $lname;?>" required>
+								<input type="text" class="form-control" onkeyup = "checking_name_last()" id = "l_name_check" name="lname" placeholder="Last Name" value="<?php echo $lname;?>" required>
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="email" class="form-control" id="email" name="email_add" placeholder="Email Address" value="<?php echo $email;?>" required>
@@ -189,7 +189,7 @@ if(isset($_POST['btnReg'])){
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" name = "btnReg" class="btn submit_btn">Register</button>
+								<input type="submit" id = "register" value="Register" name = "btnReg" class="btn submit_btn">
 							</div>
 						</form>
 					</div>
@@ -333,6 +333,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			
 			);
 			
-		}	
+		}
+	function checking_name_last(){
+			var valid_name_l = document.getElementById("l_name_check").value;
+			$.post("lname_check.php",
+			{
+				lname_valid: valid_name_l
+			},
+			function(data, status){
+				if(data == '<span style = "color:red">Invalid Name</span>'){
+					document.getElementById("register").disabled = true;
+				}else if(data == '<span style = "color:red">Invalid Name</span>'){
+					document.getElementById("register").disabled = true;
+				}else{	
+					document.getElementById("register").disabled = false;
+				}
+				document.getElementById("name_valid_check").innerHTML = data;
+				
+			}
+			
+			);
+			
+		}		
 </script>
 </html>
