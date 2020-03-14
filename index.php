@@ -37,8 +37,8 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="main_title">
-						<h2>Featured Products</h2>
-						<p>Who are in extremely love with eco friendly system.</p>
+						<h2>Featured Services</h2>
+						<p>Find out the most popular services here in Digos!</p>
 					</div>
 				</div>
 				<div class="row">
@@ -260,5 +260,6 @@
 	<script src="js/mail-script.js"></script>
 	<script src="js/theme.js"></script>
 </body>
+
 
 </html>

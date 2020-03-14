@@ -4,6 +4,18 @@
 
 .img-fit {
 	width: 280px;
-	height: 200px;
+	height: 270px;
 	object-fit: cover;
+}
+
+.f_p_item {
+	cursor: pointer;
+}
+.f_p_item h4 {
+	font-size: 18px;
+}
+
+.f_p_item h5 {
+	color: #f57224;
+	font-size: 17px;
 }
